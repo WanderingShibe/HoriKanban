@@ -68,8 +68,8 @@ const CalendarFrame = () => {
             <div className="ml-auto mr-4">Space</div>
           </div>
           <div className="h-full pl-2 flex items-center justify-center w-full">
-            {hoursOfDay.map((hour) => (
-              <div className="h-[2rem] bg-foreground w-full pr-4  items-center flex justify-start">
+            {hoursOfDay.map((hour, index) => (
+              <div key ={index} className="h-[2rem] bg-foreground w-full pr-4  items-center flex justify-start">
                 {hour}
               </div>
             ))}
@@ -77,8 +77,8 @@ const CalendarFrame = () => {
         </div>
         <div className="flex flex-row w-full h-full items-center">
           <div className="w-[20%] h-full flex flex-col justify-between items-center">
-            {daysOfWeek.map((day) => (
-              <div className="h-[50px] bg-foreground w-full items-center flex justify-center border-b-1 border-border">
+            {daysOfWeek.map((day, index) => (
+              <div key = {index} className="h-[50px] bg-foreground w-full items-center flex justify-center border-b-1 border-border">
                 {day}
               </div>
             ))}
