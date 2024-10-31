@@ -9,14 +9,13 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 type WorkspaceLayoutProps = {
-  children: React.ReactNode;
   params: {
     tag: string;
     item: string;
   };
 };
 
-export default function WorkspaceLayout({ children, params }: WorkspaceLayoutProps) {
+export default function WorkspaceLayout({ params }: WorkspaceLayoutProps) {
   const { createWorkspace, setWorkspaces, addUserToWorkspace } = useContext(
     WorkspaceContext
   ) as WorkspaceContextType;
