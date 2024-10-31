@@ -3,14 +3,10 @@
 import PopUpBody from "@/components/CustomPopUp/Body";
 import PopUpWrapper from "@/components/CustomPopUp/Wrapper";
 import { UserContext, UserContextType } from "@/contexts/Usercontext";
-import {
-  WorkspaceContext,
-  WorkspaceContextType,
-} from "@/contexts/WorkspaceContext";
-import { userWorkspaces } from "@/lib/v2/workspaces";
+import { WorkspaceContext, WorkspaceContextType } from "@/contexts/WorkspaceContext";
 import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { use, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 type WorkspaceLayoutProps = {
   children: React.ReactNode;
@@ -20,16 +16,7 @@ type WorkspaceLayoutProps = {
   };
 };
 
-export default function WorkspaceLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: {
-    tag: string;
-    item: string;
-  };
-}) {
+export default function WorkspaceLayout({ children, params }: WorkspaceLayoutProps) {
   const { createWorkspace, setWorkspaces, addUserToWorkspace } = useContext(
     WorkspaceContext
   ) as WorkspaceContextType;
@@ -38,26 +25,26 @@ export default function WorkspaceLayout({
   ) as UserContextType;
   const [name, setName] = useState("");
   const router = useRouter();
+
   const handleChange = (value: string) => {
     setName(value);
   };
+
   useEffect(() => {
     if (localStorage["token"]) {
       setToken(localStorage["token"]);
     }
   }, []);
+
   useEffect(() => {
     if (token) {
       validateToken(token);
     }
   }, [token]);
-  console.log("name", name);
+
   const handleSumbit = async () => {
     try {
-      console.log("creating workspace");
       await createWorkspace(token, { name: name });
-
-      console.log("setting the workspaces");
       router.replace("/workspace/home");
     } catch (error: unknown) {
       console.error("Failed to create workspace", error);
