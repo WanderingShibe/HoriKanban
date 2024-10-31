@@ -12,10 +12,14 @@ import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { use, useContext, useEffect, useState } from "react";
 
-type LayoutProps = {
-  title?: string;
+type WorkspaceLayoutProps = {
   children: React.ReactNode;
+  params: {
+    tag: string;
+    item: string;
+  };
 };
+
 export default function WorkspaceLayout({
   children,
   params,
