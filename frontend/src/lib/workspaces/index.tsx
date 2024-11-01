@@ -1,4 +1,5 @@
-import projectConfig from "@/components/projectConfig";
+import projectConfig from "../../components/projectConfig";
+//import projectConfig from "@/components/projectConfig";
 
 export const userWorkspaces = {
   fetchWorkspaces: async (token: any) => {
