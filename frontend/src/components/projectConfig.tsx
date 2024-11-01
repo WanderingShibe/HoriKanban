@@ -1,3 +1,7 @@
+interface ProjectConfig {
+  apiBaseUrl: string;
+}
+
 const projectConfig = {
   apiBaseUrl: "https://reqres.in/api/"
   //apiBaseUrl: "https://HoriKanban.co.uk/api",
